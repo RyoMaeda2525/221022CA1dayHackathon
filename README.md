@@ -1,5 +1,5 @@
 # 221022CA1dayHackathon
-[企画書](https://electric-bonobo-e0a.notion.site/1Day-c340c36e5438423abaaa62635b7eb893)<br>
+[企画書](https://electric-bonobo-e0a.notion.site/1Day-92c425e7e3da470e9b2c569398dfd7f4)<br>
 [クラス図](https://app.diagrams.net/#HRyoMaeda2525%2F221022CA1dayHackathon%2Fmain%2F%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.drawio)<br>
 ## メンバー
 マエティー
