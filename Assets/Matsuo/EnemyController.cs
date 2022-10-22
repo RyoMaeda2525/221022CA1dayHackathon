@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        //_gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
+        _gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
@@ -89,7 +89,7 @@ public class EnemyController : MonoBehaviour
     {
         if(_enemyHp <= 0)
         {
-            //_gameManager.EnemyCout();
+            _gameManager.EnemyCout();
             Destroy(gameObject);
         }
 
