@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour
     /// ダメージ処理
     /// </summary>
     /// <param name="damage"></param>
-    void GetDamage(int damage)
+    public void GetDamage(int damage)
     {
         _enemyHp -= damage;
     }
@@ -91,33 +91,24 @@ public class EnemyController : MonoBehaviour
 
     void GotoNextPoint()
     {
-        //NavMeshAgentのストップを解除
         _agent.isStopped = false;
-
-        //目標地点のX軸、Z軸をランダムで決める
         float posX = Random.Range(-1 * _radius, _radius);
         float posZ = Random.Range(-1 * _radius, _radius);
 
-        //CentralPointの位置にPosXとPosZを足す
         Vector3 pos = central;
         pos.x += posX;
         pos.z += posZ;
 
-        //NavMeshAgentに目標地点を設定する
         _agent.destination = pos;
     }
 
     void StopHere()
     {
-        //NavMeshAgentを止める
         _agent.isStopped = true;
-        //待ち時間を数える
         _time += Time.deltaTime;
 
-        //待ち時間が設定された数値を超えると発動
         if (_time > _waitTime)
         {
-            //目標地点を設定し直す
             GotoNextPoint();
             _time = 0;
         }

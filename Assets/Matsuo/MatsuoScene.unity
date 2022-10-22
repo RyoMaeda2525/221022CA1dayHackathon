@@ -172,11 +172,11 @@ GameObject:
   - component: {fileID: 449166285}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &449166283
 MonoBehaviour:
   m_ObjectHideFlags: 0
