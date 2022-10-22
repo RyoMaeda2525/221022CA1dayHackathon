@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEditor;
 using System.Text.RegularExpressions;
@@ -44,9 +43,9 @@ public class SceneManager : MonoBehaviour
     /// <summary>ƒAƒvƒŠ‚ð•Â‚¶‚é</summary>
     public void CloseTheGame() 
     {
-        if (Application.isEditor)
-        EditorApplication.isPlaying = false;
-        else
+        //if (Application.isEditor)
+        //EditorApplication.isPlaying = false;
+        //else
         Application.Quit();
     }
 }

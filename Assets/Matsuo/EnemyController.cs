@@ -43,10 +43,13 @@ public class EnemyController : EnemyBase
     new void Update()
     {
         base.Update();
-        if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
+        if (Time.timeScale != 0 && this.gameObject.activeSelf)
         {
-            StopHere();
+            if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
+            {
+                StopHere();
 
+            }
         }
         DropDast();
     }

@@ -52,7 +52,7 @@ public class EnemyBase : MonoBehaviour
         if (_enemyHp <= 0)
         {
             _gameManager.EnemyCout();
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
 
     }
