@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     private int _enemyCount = 0; 
 
     /// <summary>Enemyの討伐数をカウントするプロパティ</summary>
-    public int EnemyCout 
+    public void EnemyCout() 
     {
-        set { _enemyCount += value; }
+        _enemyCount++;
     }
 
     public void GameClear() { }
