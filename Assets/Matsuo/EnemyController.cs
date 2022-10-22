@@ -1,20 +1,26 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
 public class EnemyController : MonoBehaviour
 {
     [SerializeField, Tooltip("最大体力")]
-    int _enemyMaxHp;
+    int _enemyMaxHp = 10;
     [SerializeField, Tooltip("現在体力")]
     int _enemyHp;
 
     [SerializeField, Tooltip("生成する汚れ")]
     GameObject _dropDustPrefab;
+    [SerializeField, Tooltip("生成する間隔")]
+    float _dropTime = 1f;
+    [SerializeField, Tooltip("経過生成時間")]
+    float _elapsedTime;
 
     Animator _anim = default;
     NavMeshAgent _agent = null;
+    GameManager _gameManager = null;
 
     [SerializeField, Tooltip("徘徊の中心地点")]
     Vector3 central;
@@ -26,13 +32,12 @@ public class EnemyController : MonoBehaviour
     float _time = 0;
 
 
-
     void Start()
     {
-        _enemyHp = _enemyMaxHp;
+        //_gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
-
+        _enemyHp = _enemyMaxHp;
         _agent.autoBraking = false;
         GotoNextPoint();
     }
@@ -40,7 +45,12 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
+        {
             StopHere();
+
+        }
+        DropDast();
+        Death();
     }
 
     /// <summary>
@@ -48,6 +58,34 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     void DropDast()
     {
+        _elapsedTime += Time.deltaTime;
+        if (_elapsedTime > _dropTime)
+        {
+            var obj = Instantiate(_dropDustPrefab);
+            obj.transform.position = transform.position;
+            _elapsedTime = 0;
+        }
+    }
+
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
+    /// <param name="damage"></param>
+    void GetDamage(int damage)
+    {
+        _enemyHp -= damage;
+    }
+
+    /// <summary>
+    /// エネミー死亡処理
+    /// </summary>
+    void Death()
+    {
+        if(_enemyHp <= 0)
+        {
+            //_gameManager.EnemyCout();
+            Destroy(gameObject);
+        }
 
     }
 

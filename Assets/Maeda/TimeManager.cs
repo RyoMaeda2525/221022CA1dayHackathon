@@ -7,6 +7,9 @@ using DG.Tweening;
 
 public class TimeManager : MonoBehaviour
 {
+    [SerializeField]
+    GameManager _gameManager;
+
     [SerializeField, Tooltip("インゲームの体力兼時間制限")]
     private float _startHitPoint = 1;
 
@@ -60,5 +63,12 @@ public class TimeManager : MonoBehaviour
         Tween = DOTween.To(() => _hpSlider.value,
             x => _hpSlider.value = x ,hitpoint ,_changeInterval)
             .OnComplete(()=>Debug.Log("完了"));
+    }
+
+    /// <summary>攻撃を受けた際に指定した分体力を減らすように調整</summary>
+    /// <param name="damageValue">この値分ダメージを受ける。体力の最大値は1</param>
+    public void OnDamage(float damageValue) 
+    {
+        _hitpoint -= damageValue;
     }
 }
