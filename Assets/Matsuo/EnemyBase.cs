@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Cinemachine;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(CinemachineImpulseSource))]
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField, Tooltip("ç≈ëÂëÃóÕ")]
@@ -11,19 +13,21 @@ public class EnemyBase : MonoBehaviour
     [SerializeField, Tooltip("åªç›ëÃóÕ")]
     int _enemyHp;
 
-    NavMeshAgent _agent = null;
+    //NavMeshAgent _agent = null;
     GameManager _gameManager = null;
+    CinemachineImpulseSource _impulseSource = default;
 
 
-    void Start()
+    public void Start()
     {
-        _gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
-        _agent = GetComponent<NavMeshAgent>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+        //_agent = GetComponent<NavMeshAgent>();
         _enemyHp = _enemyMaxHp;
-        _agent.autoBraking = false;
+        //_agent.autoBraking = false;
     }
 
-    void Update()
+    public void Update()
     {
         Death();
     }
@@ -36,6 +40,8 @@ public class EnemyBase : MonoBehaviour
     public void GetDamage(int damage)
     {
         _enemyHp -= damage;
+        _impulseSource.GenerateImpulse(new Vector3(0, 0, -1));
+
     }
 
     /// <summary>
@@ -45,7 +51,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (_enemyHp <= 0)
         {
-            //_gameManager.EnemyCout();
+            _gameManager.EnemyCout();
             Destroy(gameObject);
         }
 
