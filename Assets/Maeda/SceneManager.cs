@@ -15,7 +15,7 @@ public class SceneManager : MonoBehaviour
 
     public void StageSceneSelect(int value) 
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene($"Stage{value}");
+        UnityEngine.SceneManagement.SceneManager.LoadScene($"Stage {value}");
     }
 
     public void SceneStringSelect(string sceneName)

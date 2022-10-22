@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +12,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _turnSpeed = 5f;
     [SerializeField] GameObject _bulletPrefab;
     [SerializeField] Transform _muzzle;
+
+    [SerializeField] Vector3 _inHaleArea;
+    [SerializeField] Vector3 _inHaleAreaSize;
+    [SerializeField] LayerMask _TrashLayer;
+    [SerializeField] int _maxTrashGauge = 30;
+    [SerializeField] int _shootLimit = 5;
+    [SerializeField] int _currentTrash = 0;
+    float _trashDis;
     float _h, _v;
     Vector3 _dir;
 
@@ -29,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if(_currentTrash < _shootLimit) { return; }
             Shoot();
         }
         else if (Input.GetMouseButton(1))
@@ -42,14 +53,31 @@ public class PlayerController : MonoBehaviour
     {
         Move();
     }
-
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawWireCube(_muzzle.localPosition + _inHaleArea, _inHaleAreaSize);
+    }
     private void InHale()
     {
-        throw new NotImplementedException();
+        if (SarchArea().Length > 0)
+        {
+            foreach (var trash in SarchArea())
+            {
+                trash.PointMove(_muzzle.position);
+                if (Vector3.Distance(trash.transform.position, _muzzle.position) <= _trashDis)
+                {
+                    _currentTrash = Mathf.Min(_currentTrash+trash.Point, _maxTrashGauge) ;
+                    Destroy(trash.gameObject);
+                }
+            }
+        }
     }
     private void Shoot()
     {
-        Instantiate(_bulletPrefab,_muzzle.position , _muzzle.rotation);
+        _currentTrash -= _shootLimit;
+        Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
     }
     private void Move()
     {
@@ -59,5 +87,19 @@ public class PlayerController : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
         }
         _rb.velocity = _dir.normalized * _speed;
+    }
+
+    TrashController[] SarchArea()
+    {
+        List<TrashController> trashlist = new List<TrashController>();
+        var array
+            = Physics.OverlapBox(transform.position + _inHaleArea, _inHaleAreaSize, transform.rotation, _TrashLayer);
+
+        foreach (var trash in array)
+        {
+            trashlist.Add(trash.GetComponent<TrashController>());
+        }
+
+        return trashlist.ToArray();
     }
 }

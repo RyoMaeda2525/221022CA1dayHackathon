@@ -5,7 +5,9 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     [SerializeField] float _speed;
-    [SerializeField] string _tag;
+    [SerializeField] float _damage;
+    [SerializeField] string _wallTag;
+    [SerializeField] string _enemyTag;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,9 @@ public class BulletMove : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //オブジェクトのアクティブを切り替えるかも
-        if (other.tag == _tag) { Destroy(gameObject); }
+        if (other.tag == _wallTag || other.tag == _enemyTag)
+        {
+            Destroy(gameObject);
+        }
     }
 }
