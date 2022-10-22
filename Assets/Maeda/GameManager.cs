@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
     /// <summary>Enemyの討伐数</summary>
     private int _enemyCount = 0;
 
-    private void Start()
+    private void SweepEnemy() 
     {
-        GameOver();
+        GameClear();
     }
 
     /// <summary>Enemyの討伐数をカウントするプロパティ</summary>
