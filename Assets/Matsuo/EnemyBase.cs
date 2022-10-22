@@ -17,7 +17,7 @@ public class EnemyBase : MonoBehaviour
 
     void Start()
     {
-        //_gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
+        _gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
         _agent = GetComponent<NavMeshAgent>();
         _enemyHp = _enemyMaxHp;
         _agent.autoBraking = false;
@@ -33,7 +33,7 @@ public class EnemyBase : MonoBehaviour
     /// ƒ_ƒ[ƒWˆ—
     /// </summary>
     /// <param name="damage"></param>
-    void GetDamage(int damage)
+    public void GetDamage(int damage)
     {
         _enemyHp -= damage;
     }

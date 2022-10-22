@@ -7,12 +7,8 @@ using Cinemachine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CinemachineImpulseSource))]
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EnemyBase
 {
-    [SerializeField, Tooltip("最大体力")]
-    int _enemyMaxHp = 10;
-    [SerializeField, Tooltip("現在体力")]
-    int _enemyHp;
 
     [SerializeField, Tooltip("生成する汚れ")]
     GameObject _dropDustPrefab;
@@ -42,7 +38,6 @@ public class EnemyController : MonoBehaviour
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
-        _enemyHp = _enemyMaxHp;
         _agent.autoBraking = false;
         GotoNextPoint();
     }
@@ -55,7 +50,6 @@ public class EnemyController : MonoBehaviour
 
         }
         DropDast();
-        Death();
     }
 
     /// <summary>
@@ -72,28 +66,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// ダメージ処理
-    /// </summary>
-    /// <param name="damage"></param>
-    public void GetDamage(int damage)
-    {
-        _enemyHp -= damage;
-        _impulseSource.GenerateImpulse(new Vector3(0, 0, -1));
-    }
 
-    /// <summary>
-    /// エネミー死亡処理
-    /// </summary>
-    void Death()
-    {
-        if(_enemyHp <= 0)
-        {
-            _gameManager.EnemyCout();
-            Destroy(gameObject);
-        }
-
-    }
 
     void GotoNextPoint()
     {
