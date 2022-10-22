@@ -30,6 +30,12 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene($"Stage {int.Parse(value) + 1}");
     }
 
+    /// <summary>“¯‚¶ƒV[ƒ“‚ğÄ¶‚µ‚È‚¨‚·</summary>
+    public void RepeatStage() 
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
     public void CloseTheGame() 
     {
         if (Application.isEditor)
