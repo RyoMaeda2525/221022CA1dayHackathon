@@ -140,7 +140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &134483496
 BoxCollider:
@@ -212,13 +212,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134483495}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.67, y: 0, z: 6.3}
-  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.78, y: 0, z: 5.2499995}
+  m_LocalScale: {x: 0.6666667, y: 0.83333325, z: 8.333332}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1997007713}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135467314
 GameObject:
@@ -599,7 +599,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2178616981785807006, guid: 6193dd29ef061764dbc59655781a2b67, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2178616981785807006, guid: 6193dd29ef061764dbc59655781a2b67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -942,7 +942,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1572423018
 BoxCollider:
@@ -1014,13 +1014,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572423017}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4, y: 0, z: -7.2}
-  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.6000001, y: 0, z: -6}
+  m_LocalScale: {x: 0.6666667, y: 0.83333325, z: 8.333332}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1997007713}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623773545
 GameObject:
@@ -1129,7 +1129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9115158192349876874, guid: 48763900583b62f49858f75030727a9d, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9115158192349876874, guid: 48763900583b62f49858f75030727a9d, type: 3}
       propertyPath: m_LocalPosition.x
