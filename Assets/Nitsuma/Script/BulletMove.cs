@@ -23,9 +23,9 @@ public class BulletMove : MonoBehaviour
         {
             if(other.tag == _enemyTag)
             {
-                if (other.gameObject.GetComponent<EnemyController>())
+                if (other.gameObject.GetComponent<EnemyBase>())
                 {
-                    other.gameObject.GetComponent<EnemyController>().GetDamage(_damage);
+                    other.gameObject.GetComponent<EnemyBase>().GetDamage(_damage);
                 }
             }
             Destroy(gameObject);
