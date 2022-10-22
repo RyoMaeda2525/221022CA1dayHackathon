@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -12,6 +13,10 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField, Tooltip("ê∂ê¨Ç∑ÇÈâòÇÍ")]
     GameObject _dropDustPrefab;
+    [SerializeField, Tooltip("ê∂ê¨Ç∑ÇÈä‘äu")]
+    float _dropTime = 1f;
+    [SerializeField, Tooltip("åoâﬂê∂ê¨éûä‘")]
+    float _elapsedTime;
 
     Animator _anim = default;
     NavMeshAgent _agent = null;
@@ -24,7 +29,6 @@ public class EnemyController : MonoBehaviour
     float _waitTime = 0.5f;
     [SerializeField, Tooltip("åoâﬂë“ã@éûä‘")]
     float _time = 0;
-
 
 
     void Start()
@@ -40,7 +44,11 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
+        {
             StopHere();
+
+        }
+        DropDast();
     }
 
     /// <summary>
@@ -48,6 +56,15 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     void DropDast()
     {
+        _elapsedTime += Time.deltaTime;
+        if (_elapsedTime > _dropTime)
+        {
+            var obj = Instantiate(_dropDustPrefab);
+            obj.transform.position = transform.position;
+            _elapsedTime = 0;
+        }
+
+
 
     }
 
