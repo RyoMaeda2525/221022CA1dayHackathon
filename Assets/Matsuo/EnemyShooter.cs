@@ -16,13 +16,15 @@ public class EnemyShooter : EnemyBase
     [SerializeField]
     float _bulletSpeed;
 
-    void Start()
+    new void Start()
     {
+        base.Start();
         _player = GameObject.FindWithTag("Player");
     }
 
-    void Update()
+    new void Update()
     {
+        base.Update();
         transform.LookAt(_player.transform);
         Shoot();
     }
