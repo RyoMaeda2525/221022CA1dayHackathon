@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8031690963506926916}
   - component: {fileID: 8031690963506926919}
   - component: {fileID: 8031690963506926918}
-  - component: {fileID: 8031690963506926913}
+  - component: {fileID: 4633902999914317119}
   m_Layer: 0
   m_Name: Dust
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8031690963506926913
+--- !u!114 &4633902999914317119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +107,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8031690963506926912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2550dd8f22b7da74e9f45f369758b34f, type: 3}
+  m_Script: {fileID: 11500000, guid: ddd5e717ec2073c45ae61bc528e19e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 3
+  _point: 1

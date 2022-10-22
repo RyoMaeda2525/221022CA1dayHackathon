@@ -127,5 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba3f361850d258448fe6db382d2d89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _tag: Finish
+  _speed: 8
+  _damage: 0
+  _wallTag: 
+  _enemyTag: 
