@@ -71,7 +71,7 @@ public class TimeManager : MonoBehaviour
 
     private void GameOverJudge() 
     {
-        if (_hpSlider.value <= 0.1f) 
+        if (_hpSlider.value <= 0f) 
         {
             _gameManager.GameOver();
         }
