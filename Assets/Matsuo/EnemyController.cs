@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Cinemachine;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -21,6 +22,7 @@ public class EnemyController : MonoBehaviour
     Animator _anim = default;
     NavMeshAgent _agent = null;
     GameManager _gameManager = null;
+    CinemachineImpulseSource _impulseSource = default;
 
     [SerializeField, Tooltip("úpújÇÃíÜêSínì_")]
     Vector3 central;
@@ -37,6 +39,7 @@ public class EnemyController : MonoBehaviour
         //_gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
         _enemyHp = _enemyMaxHp;
         _agent.autoBraking = false;
         GotoNextPoint();
@@ -74,6 +77,7 @@ public class EnemyController : MonoBehaviour
     public void GetDamage(int damage)
     {
         _enemyHp -= damage;
+        _impulseSource.GenerateImpulse(new Vector3(0, 0, -1));
     }
 
     /// <summary>

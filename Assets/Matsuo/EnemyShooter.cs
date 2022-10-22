@@ -44,12 +44,4 @@ public class EnemyShooter : EnemyBase
             _elapsedTime = 0;
         }
     }
-
-    /// <summary>
-    /// ’e‚Ì”­ŽË
-    /// </summary>
-    private void LauncherShot()
-    {
-
-    }
 }
