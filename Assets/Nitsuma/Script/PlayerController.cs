@@ -2,10 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
-using static UnityEngine.EventSystems.EventTrigger;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int _maxTrashGauge = 30;
     [SerializeField] int _shootLimit = 5;
     [SerializeField] int _currentTrash = 0;
+
+    [SerializeField] Image _gauge;
     float _trashDis;
     float _h, _v;
     Vector3 _dir;
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _timeManager = FindObjectOfType<TimeManager>();
+        _gauge.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(_currentTrash < _shootLimit) { return; }
+            if (_currentTrash < _shootLimit) { return; }
             Shoot();
         }
         else if (Input.GetMouseButton(1))
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy") { _timeManager.OnDamage(5); }
+        if (collision.gameObject.tag == "Enemy") { _timeManager.OnDamage(5); }
     }
 
     private void FixedUpdate()
@@ -77,7 +78,8 @@ public class PlayerController : MonoBehaviour
                 trash.PointMove(_muzzle.position, _inHalePower);
                 if (Vector3.Distance(trash.transform.position, _muzzle.position) <= _trashDis)
                 {
-                    _currentTrash = Mathf.Min(_currentTrash+trash.Point, _maxTrashGauge) ;
+                    _currentTrash = Mathf.Min(_currentTrash + trash.Point, _maxTrashGauge);
+                    _gauge.fillAmount = (float)_currentTrash / (float)_maxTrashGauge * 0.8f;
                     Destroy(trash.gameObject);
                 }
             }
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot()
     {
         _currentTrash -= _shootLimit;
+        _gauge.fillAmount = (float)_currentTrash / (float)_maxTrashGauge * 0.8f;
         Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
     }
     private void Move()
@@ -96,6 +99,11 @@ public class PlayerController : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
         }
         _rb.velocity = _dir.normalized * _speed;
+    }
+
+    void ShowGauge()
+    {
+        _gauge.fillAmount = _currentTrash / _maxTrashGauge;
     }
 
     TrashController[] SarchArea()
