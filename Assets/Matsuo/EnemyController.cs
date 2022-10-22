@@ -5,6 +5,8 @@ using Cinemachine;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(CinemachineImpulseSource))]
+
 public class EnemyController : MonoBehaviour
 {
     [SerializeField, Tooltip("Å‘å‘Ì—Í")]
