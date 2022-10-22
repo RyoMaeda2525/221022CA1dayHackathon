@@ -69,7 +69,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy") { _timeManager.OnDamage(0.1f); }
+        if (collision.gameObject.tag == "Enemy"||collision.gameObject.tag == "Bullet")
+        {
+            _SE.SePlay(0);
+            _timeManager.OnDamage(0.1f);
+        }
     }
 
     private void FixedUpdate()
