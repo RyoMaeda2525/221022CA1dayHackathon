@@ -7,7 +7,7 @@ using System.Collections;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField, Tooltip("最大体力")]
-    int _enemyMaxHp;
+    int _enemyMaxHp = 10;
     [SerializeField, Tooltip("現在体力")]
     int _enemyHp;
 
@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
 
     Animator _anim = default;
     NavMeshAgent _agent = null;
+    GameManager _gameManager = null;
 
     [SerializeField, Tooltip("徘徊の中心地点")]
     Vector3 central;
@@ -33,10 +34,10 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        _enemyHp = _enemyMaxHp;
+        _gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
-
+        _enemyHp = _enemyMaxHp;
         _agent.autoBraking = false;
         GotoNextPoint();
     }
@@ -49,6 +50,7 @@ public class EnemyController : MonoBehaviour
 
         }
         DropDast();
+        Death();
     }
 
     /// <summary>
@@ -63,8 +65,27 @@ public class EnemyController : MonoBehaviour
             obj.transform.position = transform.position;
             _elapsedTime = 0;
         }
+    }
 
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
+    /// <param name="damage"></param>
+    void GetDamage(int damage)
+    {
+        _enemyHp -= damage;
+    }
 
+    /// <summary>
+    /// エネミー死亡処理
+    /// </summary>
+    void Death()
+    {
+        if(_enemyHp <= 0)
+        {
+            //_gameManager.EnemyCout();
+            Destroy(gameObject);
+        }
 
     }
 
