@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        _gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
+        //_gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _enemyHp = _enemyMaxHp;
