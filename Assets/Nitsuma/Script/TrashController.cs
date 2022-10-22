@@ -5,14 +5,12 @@ using UnityEngine;
 public class TrashController : MonoBehaviour
 {
     [SerializeField]
-    float _speed = 3f;
-    [SerializeField]
     int _point = 1;
 
     public int Point { get => _point;}
 
-    public void PointMove(Vector3 pos)
+    public void PointMove(Vector3 pos ,float speed)
     {
-        this.transform.position = Vector3.MoveTowards(transform.position, pos, _speed * Time.deltaTime);
+        this.transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
     }
 }

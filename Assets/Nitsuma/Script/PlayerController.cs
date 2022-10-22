@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -13,9 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _bulletPrefab;
     [SerializeField] Transform _muzzle;
 
+    [SerializeField] Transform _inHalePos;
+    [SerializeField] float _inHalePower;
     [SerializeField] Vector3 _inHaleArea;
     [SerializeField] Vector3 _inHaleAreaSize;
     [SerializeField] LayerMask _TrashLayer;
+
     [SerializeField] int _maxTrashGauge = 30;
     [SerializeField] int _shootLimit = 5;
     [SerializeField] int _currentTrash = 0;
@@ -24,10 +28,12 @@ public class PlayerController : MonoBehaviour
     Vector3 _dir;
 
     Rigidbody _rb;
+    TimeManager _timeManager;
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _timeManager = FindObjectOfType<TimeManager>();
     }
 
     // Update is called once per frame
@@ -48,6 +54,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy") { _timeManager.OnDamage(5); }
+    }
 
     private void FixedUpdate()
     {
@@ -56,8 +66,7 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.matrix = transform.localToWorldMatrix;
-        Gizmos.DrawWireCube(_muzzle.localPosition + _inHaleArea, _inHaleAreaSize);
+        Gizmos.DrawWireCube(_inHalePos.position + _inHaleArea, _inHaleAreaSize);
     }
     private void InHale()
     {
@@ -65,7 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             foreach (var trash in SarchArea())
             {
-                trash.PointMove(_muzzle.position);
+                trash.PointMove(_muzzle.position, _inHalePower);
                 if (Vector3.Distance(trash.transform.position, _muzzle.position) <= _trashDis)
                 {
                     _currentTrash = Mathf.Min(_currentTrash+trash.Point, _maxTrashGauge) ;

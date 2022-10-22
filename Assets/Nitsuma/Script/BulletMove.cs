@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     [SerializeField] float _speed;
-    [SerializeField] float _damage;
+    [SerializeField] int _damage;
     [SerializeField] string _wallTag;
     [SerializeField] string _enemyTag;
     Rigidbody rb;
@@ -21,6 +21,13 @@ public class BulletMove : MonoBehaviour
         //オブジェクトのアクティブを切り替えるかも
         if (other.tag == _wallTag || other.tag == _enemyTag)
         {
+            if(other.tag == _enemyTag)
+            {
+                if (other.gameObject.GetComponent<EnemyController>())
+                {
+                    other.gameObject.GetComponent<EnemyController>().GetDamage(_damage);
+                }
+            }
             Destroy(gameObject);
         }
     }
