@@ -19,9 +19,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField, Tooltip("徘徊の中心地点")]
     Vector3 central;
     [SerializeField, Tooltip("移動範囲")]
-    float _radius = 3;
+    float _radius = 5;
     [SerializeField, Tooltip("設定した待機時間")]
-    float _waitTime = 2;
+    float _waitTime = 0.5f;
     [SerializeField, Tooltip("経過待機時間")]
     float _time = 0;
 

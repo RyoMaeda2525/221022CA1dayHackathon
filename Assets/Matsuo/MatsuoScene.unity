@@ -158,8 +158,8 @@ MonoBehaviour:
   _enemyHp: 0
   _dropDustPrefab: {fileID: 0}
   central: {x: 0, y: 0, z: 0}
-  _radius: 3
-  _waitTime: 2
+  _radius: 5
+  _waitTime: 0.5
   _time: 0
 --- !u!4 &449166284
 Transform:
@@ -187,7 +187,7 @@ Animator:
   m_GameObject: {fileID: 449166282}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bd80a7d711b9f941bc34490c147a67c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
