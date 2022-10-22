@@ -37,7 +37,13 @@ public class TimeManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TimeElapsed();
+        if (_hitpoint > 0)
+        {
+            TimeElapsed();
+        }
+        else //if (!_gameManager.GameOver)
+        //    _gameManager.GameOver = true;
+        { _gameManager.GameOver(); }
     }
 
     private void HitPointRiset() 
@@ -61,8 +67,7 @@ public class TimeManager : MonoBehaviour
     private void HpSliderUpdate(float hitpoint)
     {
         Tween = DOTween.To(() => _hpSlider.value,
-            x => _hpSlider.value = x ,hitpoint ,_changeInterval)
-            .OnComplete(()=>Debug.Log("Š®—¹"));
+            x => _hpSlider.value = x, hitpoint, _changeInterval);
     }
 
     /// <summary>UŒ‚‚ğó‚¯‚½Û‚Éw’è‚µ‚½•ª‘Ì—Í‚ğŒ¸‚ç‚·‚æ‚¤‚É’²®</summary>
