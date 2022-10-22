@@ -28,18 +28,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Image _gauge;
 
     AudioSource _audio;
-    [SerializeField] AudioClip _audioClip;
     float _trashDis;
     float _h, _v;
     Vector3 _dir;
 
     Rigidbody _rb;
     TimeManager _timeManager;
+    SEPlay _SE;
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _timeManager = FindObjectOfType<TimeManager>();
+        _SE = FindObjectOfType<SEPlay>();
         _gauge.fillAmount = 0;
     }
 
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Shoot()
     {
+        _SE.SePlay(2);
         _currentTrash -= _shootLimit;
         _gauge.fillAmount = (float)_currentTrash / (float)_maxTrashGauge * 0.8f;
         Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
