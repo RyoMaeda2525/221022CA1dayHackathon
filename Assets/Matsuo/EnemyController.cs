@@ -3,9 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using Cinemachine;
 
-[RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(CinemachineImpulseSource))]
+
 
 public class EnemyController : EnemyBase
 {
@@ -19,8 +17,7 @@ public class EnemyController : EnemyBase
 
     Animator _anim = default;
     NavMeshAgent _agent = null;
-    GameManager _gameManager = null;
-    CinemachineImpulseSource _impulseSource = default;
+    //GameManager _gameManager = null;
 
     [SerializeField, Tooltip("úpújÇÃíÜêSínì_")]
     Vector3 central;
@@ -32,18 +29,20 @@ public class EnemyController : EnemyBase
     float _time = 0;
 
 
-    void Start()
+    new void Start()
     {
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        base.Start();
+        //_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
-        _impulseSource = GetComponent<CinemachineImpulseSource>();
+        //_impulseSource = GetComponent<CinemachineImpulseSource>();
         _agent.autoBraking = false;
         GotoNextPoint();
     }
 
-    void Update()
+    new void Update()
     {
+        base.Update();
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
         {
             StopHere();

@@ -396,6 +396,14 @@ PrefabInstance:
       propertyPath: _radius
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 9115158192349876877, guid: 48763900583b62f49858f75030727a9d, type: 3}
+      propertyPath: _enemyHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9115158192349876877, guid: 48763900583b62f49858f75030727a9d, type: 3}
+      propertyPath: _enemyMaxHp
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48763900583b62f49858f75030727a9d, type: 3}
 --- !u!1 &861774057
@@ -747,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4114704728415747454, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -449
+      value: -412
       objectReference: {fileID: 0}
     - target: {fileID: 4114704728415747455, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
       propertyPath: m_Value
