@@ -7,22 +7,27 @@ using System.Text.RegularExpressions;
 
 public class SceneManager : MonoBehaviour
 {
-
+    /// <summary>引数と同じIndexのビルドシーンに飛ぶ</summary>
+    /// <param name="value"></param>
     public void SceneValueSelect(int value) 
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(value);
     }
 
-    public void StageSceneSelect(int value) 
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene($"Stage {value}");
-    }
-
+    /// <summary>引数と同じ名前のビルドシーンに飛ぶ</summary>
+    /// <param name="sceneName"></param>
     public void SceneStringSelect(string sceneName)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
+    /// <summary>引数と同じIndexのStageシーンに飛ぶ</summary>
+    /// <param name="value"></param>
+    public void StageSceneSelect(int value) 
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene($"Stage {value}");
+    }
+    
     /// <summary>次のStageに飛ぶ(StageSceneからしか使えない) </summary>
     public void NextStage() 
     {
@@ -36,6 +41,7 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
+    /// <summary>アプリを閉じる</summary>
     public void CloseTheGame() 
     {
         if (Application.isEditor)
