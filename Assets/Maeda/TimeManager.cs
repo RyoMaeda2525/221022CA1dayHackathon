@@ -20,7 +20,7 @@ public class TimeManager : MonoBehaviour
     float _changeInterval = 1.0f;
 
     [SerializeField, Tooltip("–ˆ•b‘Ì—Í‚ğŒ¸‚ç‚·’l")]
-    float _timeDamage = 0.01f;
+    float _timeLimit = 60f;
 
     /// <summary>ƒQ[ƒ€’†‚Ì‘Ì—Í</summary>
     private float _hitpoint = 100;
@@ -52,7 +52,7 @@ public class TimeManager : MonoBehaviour
 
         if(_timer > 1.0f) 
         {
-            _hitpoint -= _timeDamage;
+            _hitpoint -=  1@/ _timeLimit;
             HpSliderUpdate(_hitpoint);
             _timer = 0;
         }
