@@ -11,14 +11,6 @@ public class EnemyBase : MonoBehaviour
     [SerializeField, Tooltip("Œ»İ‘Ì—Í")]
     int _enemyHp;
 
-    [SerializeField, Tooltip("¶¬‚·‚é‰˜‚ê")]
-    GameObject _dropDustPrefab;
-    [SerializeField, Tooltip("¶¬‚·‚éŠÔŠu")]
-    float _dropTime = 1f;
-    [SerializeField, Tooltip("Œo‰ß¶¬ŠÔ")]
-    float _elapsedTime;
-
-    Animator _anim = default;
     NavMeshAgent _agent = null;
     GameManager _gameManager = null;
 
@@ -26,7 +18,6 @@ public class EnemyBase : MonoBehaviour
     void Start()
     {
         //_gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
-        _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _enemyHp = _enemyMaxHp;
         _agent.autoBraking = false;
