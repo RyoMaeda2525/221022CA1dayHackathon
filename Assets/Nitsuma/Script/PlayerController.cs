@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int _shootLimit = 5;
     [SerializeField] int _currentTrash = 0;
 
+    [SerializeField] GameObject _mark;
     [SerializeField] Image _gauge;
     float _trashDis;
     float _h, _v;
@@ -49,15 +50,20 @@ public class PlayerController : MonoBehaviour
             if (_currentTrash < _shootLimit) { return; }
             Shoot();
         }
-        else if (Input.GetMouseButton(1))
+
+        if (Input.GetMouseButton(1))
         {
             InHale();
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            if (_mark.activeSelf) { _mark.SetActive(false); }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy") { _timeManager.OnDamage(5); }
+        if (collision.gameObject.tag == "Enemy") { _timeManager.OnDamage(0.1f); }
     }
 
     private void FixedUpdate()
@@ -71,6 +77,7 @@ public class PlayerController : MonoBehaviour
     }
     private void InHale()
     {
+        if (!_mark.activeSelf) { _mark.SetActive(true); }
         if (SarchArea().Length > 0)
         {
             foreach (var trash in SarchArea())
@@ -100,12 +107,6 @@ public class PlayerController : MonoBehaviour
         }
         _rb.velocity = _dir.normalized * _speed;
     }
-
-    void ShowGauge()
-    {
-        _gauge.fillAmount = _currentTrash / _maxTrashGauge;
-    }
-
     TrashController[] SarchArea()
     {
         List<TrashController> trashlist = new List<TrashController>();
