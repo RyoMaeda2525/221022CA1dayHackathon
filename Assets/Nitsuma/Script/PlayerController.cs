@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] List<TrashController> _trash;
+
     [SerializeField] float _speed = 5f;
     [SerializeField] float _turnSpeed = 5f;
     [SerializeField] GameObject _bulletPrefab;
@@ -24,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject _mark;
     [SerializeField] Image _gauge;
+
+    AudioSource _audio;
+    [SerializeField] AudioClip _audioClip;
     float _trashDis;
     float _h, _v;
     Vector3 _dir;
@@ -117,6 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             trashlist.Add(trash.GetComponent<TrashController>());
         }
+        _trash = trashlist;
 
         return trashlist.ToArray();
     }
