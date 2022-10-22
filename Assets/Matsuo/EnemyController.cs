@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        _gameManager = GameObject.Find("GameObject").GetComponent<GameManager>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
