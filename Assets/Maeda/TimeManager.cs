@@ -54,7 +54,7 @@ public class TimeManager : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
-        if(_timer > 1.0f) 
+        if(_timer > 0.5f) 
         {
             _hitpoint -=  1Å@/ _timeLimit;
             HpSliderUpdate(_hitpoint , _changeInterval);
@@ -64,6 +64,8 @@ public class TimeManager : MonoBehaviour
 
     private void HpSliderUpdate(float hitpoint , float changeInterval)
     {
+        if (hitpoint <= 0.1) { changeInterval = 0.1f; }
+
         _tween = DOTween.To(() => _hpSlider.value,
             x => _hpSlider.value = x, hitpoint, _changeInterval)
             .OnComplete(() => GameOverJudge());
@@ -71,7 +73,7 @@ public class TimeManager : MonoBehaviour
 
     private void GameOverJudge() 
     {
-        if (_hpSlider.value <= 0f) 
+        if (_hpSlider.value <= 0.001f) 
         {
             _gameManager.GameOver();
         }
@@ -82,6 +84,6 @@ public class TimeManager : MonoBehaviour
     public void OnDamage(float damageValue) 
     {
         _hitpoint -= _startHitPoint / _damage;
-        HpSliderUpdate(_hitpoint , 0.1f);
+        HpSliderUpdate(_hitpoint , 0.5f);
     }
 }

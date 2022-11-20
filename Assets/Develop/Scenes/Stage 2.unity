@@ -946,6 +946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4114704726865556278, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4114704726866317468, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -970,6 +974,18 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.24675225
       objectReference: {fileID: 0}
+    - target: {fileID: 4114704726929731038, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.858
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114704726929731038, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114704726929731038, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.858
+      objectReference: {fileID: 0}
     - target: {fileID: 4114704727630945252, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -989,6 +1005,10 @@ PrefabInstance:
     - target: {fileID: 4114704727630945259, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114704728415747453, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4114704728415747454, guid: f08f2b0563335074e9aa1e11badbce76, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1392,9 +1412,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5501553791123966972, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.858
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501553791123966972, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5501553791124121682, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501553791124121686, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501553791190529726, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.858
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501553791190529726, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501553791190529726, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.858
       objectReference: {fileID: 0}
     - target: {fileID: 6107230209007401258, guid: c7c531a88c4180a47a6ede764f625780, type: 3}
       propertyPath: m_Name
